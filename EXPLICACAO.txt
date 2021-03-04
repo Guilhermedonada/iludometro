@@ -1,0 +1,54 @@
+
+INSTALAR
+BACKEND
+
+npm install --save express
+npm install --save body-parser
+npm install --save mongoose
+npm install --save nodemon
+npm install --save cors
+npm install --save express-session
+
+FRONEND
+react-router
+
+RUN FRONTEND
+npm start
+
+RUN BACKEND
+
+terminal 1
+nodemon server.js
+
+terminal 2
+mongod
+
+terminal 3
+digitar: mongo
+digitar: show databases
+digitar: use nome_do_banco
+digitar: use collections
+digitar: db.nome_da_collection.find()
+
+COMANDOS MONGO
+
+find
+db.usuarios.find()
+
+truncate table
+db.usuarios.remove({})
+
+where
+db.usuarios.remove({id:123})
+
+sort
+db.leituras.find().sort({_id:-1})
+
+
+
+
+=> Para acessar o servidor (server.js) node.js pelo react (via fetch), foi necessario instalar 
+a extensao do 'cors' no nodejs, a mesma serve como middleware e deve ser configurada de modo que 
+seja linkado quais os links que podem acessar a api
+
+=>

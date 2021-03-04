@@ -1,0 +1,27 @@
+BACKEND
+
+npm install --save express
+npm install --save body-parser
+npm install --save mongoose
+npm install --save nodemon
+npm install --save cors
+npm install --save express-session
+
+FRONEND
+react-router
+
+
+RUN SERVER
+
+terminal 1
+nodemon server.js
+
+terminal 2
+mongod
+
+terminal 3
+digitar: mongo
+digitar: show databases
+digitar: use nome_do_banco
+digitar: use collections
+digitar: db.nome_da_collection.find()
