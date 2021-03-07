@@ -7,9 +7,9 @@ const Users = mongoose.model('Users')
 
 router.get('/get_friends', (req, res) => {
 
-  Users.find().lean().sort({date: 'desc'}).then((friends) => {
+  Users.find().lean().sort({date: 'desc'}).then((user) => {
     res.status(200)
-    res.send({friends: friends})
+    res.send({user: user})
    
   }).catch((erro) => {
     res.status(500)
@@ -19,13 +19,43 @@ router.get('/get_friends', (req, res) => {
 
 })
 
-
-
 router.get('/post_user', (req, res) => {
   const newUser = {
     name: 'Shrek',
     email: 'shrek@gmail.com',
-    hate: 'Corn'
+    hate: 'Corn',
+    friends: [
+      {
+        name: 'Guilherme Donada',
+        hate: 'skol',
+        voted: false,
+        votes: {
+          heart: 10,
+          heartbroken: 2,
+          fire: 130,
+          horse: 12,
+          eye: 12412,
+          poo: 2,
+          frown: 1,
+          bomb: 2
+        }
+      },
+      {
+        name: 'Otto',
+        hate: 'skin',
+        voted: false,
+        votes: {
+          heart: 1,
+          heartbroken: 2,
+          fire: 2,
+          horse: 12,
+          eye: 123,
+          poo: 4,
+          frown: 1,
+          bomb: 2
+        }
+      }
+    ]
   }
 
   new Users(newUser).save().then(() => {
@@ -38,6 +68,24 @@ router.get('/post_user', (req, res) => {
     res.status(500)    
   })
 })
+
+// router.get('/post_user', (req, res) => {
+//   const newUser = {
+//     name: 'Shrek',
+//     email: 'shrek@gmail.com',
+//     hate: 'Corn'
+//   }
+
+//   new Users(newUser).save().then(() => {
+//     res.send('Criado com sucesso')
+//     res.status(200)
+
+//   }).catch((erro) => {
+    
+//     res.send("Houve um erro ao crriar")
+//     res.status(500)    
+//   })
+// })
 
 // router.get('/categorias/add', (req, res) => {
 // 	res.render('admin/addcategorias')

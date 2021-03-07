@@ -14,6 +14,23 @@ const Users = new Schema({
 		type: String,
 		require: true
 	},
+	friends: [
+		{
+			name: { type: String },
+			hate:  { type: String },
+			voted:  { type: Boolean },
+			votes: {
+				heart:  { type: Number },
+				heartbroken: { type: Number },
+				fire: { type: Number },
+				horse: { type: Number },
+				eye: { type: Number },
+				poo: { type: Number },
+				frown: { type: Number },
+				bomb: { type: Number },
+			},
+		}
+	],
 	date: {
 		type: Date,
 		default: Date.now()
