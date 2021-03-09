@@ -24,9 +24,19 @@ router.get('/post_user', (req, res) => {
     name: 'Shrek',
     email: 'shrek@gmail.com',
     hate: 'Corn',
+    votes: {
+      heart: 1,
+      heartbroken: 2,
+      fire: 2,
+      horse: 12,
+      eye: 123,
+      poo: 4,
+      frown: 1,
+      bomb: 2
+    },
     friends: [
       {
-        name: 'Guilherme Donada',
+        name: 'Donada',
         hate: 'skol',
         voted: false,
         votes: {
@@ -42,7 +52,7 @@ router.get('/post_user', (req, res) => {
       },
       {
         name: 'Otto',
-        hate: 'skin',
+        hate: 'it',
         voted: false,
         votes: {
           heart: 1,

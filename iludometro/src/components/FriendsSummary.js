@@ -3,10 +3,6 @@ import lula from '../images/lula.jpg'
 
 const FriendsSummary = (props) => {
 
-  // setHeart(props.votes.heart)
-  // console.log(props.votes.heart)
-
-
   const[heart, setHeart] = useState(props.votes.heart)
   const[heartbroken, setHeartBroken] = useState(props.votes.heartbroken)
   const[fire, setFire] = useState(props.votes.fire)
@@ -15,11 +11,6 @@ const FriendsSummary = (props) => {
   const[poo, setPoo] = useState(props.votes.poo)
   const[frown, setFrown] = useState(props.votes.frown)
   const[bomb, setBomb] = useState(props.votes.bomb)
-
-  
-
-  // setHeart(props.votes.heart)
-
 
   const Heart = (e) => {
     setHeart(heart + 1)

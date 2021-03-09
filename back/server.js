@@ -5,6 +5,23 @@ const path = require('path')
 const cors = require('cors')
 const mongoose = require('mongoose')
 
+const http = require('http').createServer(app)
+const io = require('socket.io')(http)
+
+
+io.on('connection', function(socket){
+	console.log('a user connected now..');
+	socket.on('joined', function(data) {
+			console.log(data);
+			socket.emit('acknowledge', 'Acknowledged');
+	});
+	socket.on('chat message', function(data){
+		socket.emit('response message', data);
+		console.log(JSON.stringify(data));
+
+
+	});
+});
 // routes
 
 const users = require("./routes/users")
@@ -44,7 +61,7 @@ app.use('/users', users)
 
 
 const PORT = 8081
-app.listen(PORT, () => {
+http.listen(PORT, () => {
 	console.log("Servidor rodando")
 })
 console.log('eai magrao')

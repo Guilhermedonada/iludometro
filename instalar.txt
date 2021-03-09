@@ -6,9 +6,11 @@ npm install --save mongoose
 npm install --save nodemon
 npm install --save cors
 npm install --save express-session
+npm install --save socket.io
 
 FRONEND
-react-router
+npm install react-router
+npm install socket.io-client
 
 
 RUN SERVER

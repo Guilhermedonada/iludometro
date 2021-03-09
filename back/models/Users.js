@@ -14,6 +14,16 @@ const Users = new Schema({
 		type: String,
 		require: true
 	},
+	votes: {
+		heart:  { type: Number },
+		heartbroken: { type: Number },
+		fire: { type: Number },
+		horse: { type: Number },
+		eye: { type: Number },
+		poo: { type: Number },
+		frown: { type: Number },
+		bomb: { type: Number },
+	},
 	friends: [
 		{
 			name: { type: String },

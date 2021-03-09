@@ -7,28 +7,31 @@ import Profile from './components/Profile'
 import Resume from './components/Resume'
 import Friends from './components/Friends'
 import Menu from './components/Menu'
+import {UserProvider} from './components/context/UserContext'
 import './App.css';
 
 function App() {
   return (
-    <Router>
-      <Switch>
-        <Route path="/" exact component={Login} />
-        <Route path="/login" exact component={Login} />
-        <div className="css-main-grid css-main-grid-lg">
-          <div className="css-side-menu">
-            <Profile/>
-            <Resume />
+    <UserProvider>
+      <Router>
+        <Switch>
+          <Route path="/" exact component={Login} />
+          <Route path="/login" exact component={Login} />
+          <div className="css-main-grid css-main-grid-lg">
+            <div className="css-side-menu">
+              <Profile/>
+              <Resume />
+            </div>
+            <Route path="/home" component={Home}/>
+            <Route path="/configuration" component={Configuration}/>
+            <div className="css-friends">
+              <Menu />
+              <Friends />
+            </div>
           </div>
-          <Route path="/home" component={Home}/>
-          <Route path="/configuration" component={Configuration}/>
-          <div className="css-friends">
-            <Menu />
-            <Friends />
-          </div>
-        </div>
-      </Switch>
-    </Router>
+        </Switch>
+      </Router>
+    </UserProvider>
   );
 }
 

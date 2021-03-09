@@ -1,35 +1,39 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import FriendsSummary from './FriendsSummary'
 import '../App.css';
 
+import io from "socket.io-client"
+
+
+import {UserContext, UserProvider} from './context/UserContext'
+
+const socket = io('http://localhost:8081', {
+  transports: ['websocket', 'polling']
+});
 
 const Home = () => {
 
-   //executa apenas uma vez ao carregar o componente
+  const [user, setUser] = useContext(UserContext)
+
   useEffect(() => {
-    getUser()
-  },[])
+    socket.on('connect',(data) => {
+      socket.emit('joined', 'Hello World from client...');
+    });
+  }, []);
 
-  const[friends, setFriends] = useState([])
 
-  const getUser = async () => {
-    const response = await fetch('http://localhost:8081/users/get_friends')
-    const data = await response.json()
-    // console.log(data.user[0].friends)
-    setFriends(data.user[0].friends)
-  }
 
+  // console.log(user)
+  // console.log(user.friends)
 
   return(
-
     <div className="css-home">
       <div className="css-home-div-find">
         <input className="css-home-find" placeholder="Typo here to find someone" type="text"/>
       </div>
       <div className="css-overflow css-home-friends">
         {
-          friends.map(friend => (
-            // console.log(friend)
+          user.friends.map(friend => (
             <FriendsSummary
               key={friend.id}
               name={friend.name}
@@ -38,10 +42,9 @@ const Home = () => {
               votes={friend.votes}
             />
           ))
-        }     
+        }           
       </div>
     </div>
- 
   )
 }
 
